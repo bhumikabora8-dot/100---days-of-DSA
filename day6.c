@@ -1,18 +1,22 @@
 #include <stdio.h>
-#include <string.h>
 int main() {
-    char s[1000];
-    scanf("%s", s);   
-    int i = 0;
-    int j = strlen(s) - 1;
-
-    while (i < j) {
-        char temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
-        i++;
-        j--;
+    int n;
+    scanf("%d", &n);
+    if (n == 0)
+        return 0;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
-    printf("%s\n", s);
+    int j = 1;  
+    for (int i = 1; i < n; i++) {
+        if (arr[i] != arr[i - 1]) {
+            arr[j] = arr[i];
+            j++;
+        }
+    }
+    for (int i = 0; i < j; i++) {
+        printf("%d ", arr[i]);
+    }
     return 0;
 }
